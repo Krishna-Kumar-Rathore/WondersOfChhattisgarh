@@ -1,2 +1,7 @@
+Google Analytics Details
+
+Stream ID : 11844705340
+
+Measurement Id : G-GQ8KLS3TGM
 
 

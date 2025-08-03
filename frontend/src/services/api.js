@@ -42,7 +42,7 @@ export const placesAPI = {
   delete: (id) => api.delete(`/places/${id}`),
   getCities: () => api.get('/places/filters/cities')
 };
-
+ 
 // Reviews API
 export const reviewsAPI = {
   getByPlace: (placeId) => api.get(`/reviews/${placeId}`),
