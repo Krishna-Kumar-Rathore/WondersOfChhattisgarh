@@ -43,7 +43,7 @@ function BeInspired() {
         <div 
           className="relative flex items-center justify-center bg-center bg-cover h-96"
           style={{
-            backgroundImage: "url('https://res.cloudinary.com/dcwgv3imm/image/upload/v1754225328/Chhattisgarh-Festivals-Food-and-Fun-A-Colorful-Celebration-of-Culture.jpeg_pdugrv.jpg')"
+            backgroundImage: "url('https://res.cloudinary.com/dcwgv3imm/image/upload/v1755714383/CGimg_2_gyixra.png')"
           }}
         >
           <div className="z-10 text-center">

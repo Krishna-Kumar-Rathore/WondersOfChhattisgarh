@@ -29,15 +29,14 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 z-50 w-full bg-white shadow-lg">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src={CGIcon} // "src/assets/Photos/CG_Icon.jpg"
-              alt="Chhattisgarh Logo"
-              className="w-14 h-14 object-cover rounded-full shadow-sm group-hover:scale-105 hover:shadow-amber-400 transition-transform duration-300"
+              src={CGIcon} 
+              className="object-cover transition-transform duration-300 rounded-full shadow-sm w-14 h-14 group-hover:scale-105 hover:shadow-amber-400"
             />
             <Link to="/" className="text-2xl font-bold text-primary-600">
               Wonder of Chhattisgarh
@@ -45,22 +44,22 @@ function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="items-center hidden space-x-8 md:flex">
             <Link
               to="/"
-              className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
             >
               Be Inspired
             </Link>
             <Link
               to="/places"
-              className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
             >
               Places To Go
             </Link>
             <Link
               to="/things-to-do"
-              className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
             >
               Things To Do
             </Link>
@@ -69,14 +68,14 @@ function Navbar() {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/wishlist"
-                  className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+                  className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
                 >
                   Wishlist
                 </Link>
                 {user.isAdmin && (
                   <Link
                     to="/admin"
-                    className="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors"
+                    className="px-4 py-2 text-white transition-colors rounded-md bg-primary-600 hover:bg-primary-700"
                   >
                     Admin
                   </Link>
@@ -85,7 +84,7 @@ function Navbar() {
                   <span className="text-gray-700">Hi, {user.name}</span>
                   <button
                     onClick={handleLogout}
-                    className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+                    className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
                   >
                     Logout
                   </button>
@@ -95,13 +94,13 @@ function Navbar() {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/login"
-                  className="text-gray-700 hover:text-primary-600 px-3 py-2 transition-colors"
+                  className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors"
+                  className="px-4 py-2 text-white transition-colors rounded-md bg-primary-600 hover:bg-primary-700"
                 >
                   Sign Up
                 </Link>
@@ -110,13 +109,13 @@ function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-primary-600 p-2"
+              className="p-2 text-gray-700 hover:text-primary-600"
             >
               <svg
-                className="h-6 w-6"
+                className="w-6 h-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -135,7 +134,7 @@ function Navbar() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="bg-white border-t md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               to="/"
@@ -171,7 +170,7 @@ function Navbar() {
                 {user.isAdmin && (
                   <Link
                     to="/admin"
-                    className="block px-3 py-2 text-primary-600 font-medium"
+                    className="block px-3 py-2 font-medium text-primary-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Admin Panel
@@ -183,7 +182,7 @@ function Navbar() {
                     handleLogout();
                     setIsMenuOpen(false);
                   }}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600"
+                  className="block w-full px-3 py-2 text-left text-gray-700 hover:text-primary-600"
                 >
                   Logout
                 </button>
@@ -199,7 +198,7 @@ function Navbar() {
                 </Link>
                 <Link
                   to="/signup"
-                  className="block px-3 py-2 text-primary-600 font-medium"
+                  className="block px-3 py-2 font-medium text-primary-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign Up

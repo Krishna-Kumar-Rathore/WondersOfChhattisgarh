@@ -17,8 +17,8 @@ function PlacesToGo() {
   const categories = ['Natural', 'Adventure', 'Historic', 'Religious'];
 
   useEffect(() => {
-    fetchPlaces();
-    fetchCities();
+    fetchPlaces(); // fetching all places data
+    fetchCities(); // fetching all cities name
   }, []);
 
   useEffect(() => {
@@ -106,9 +106,9 @@ function PlacesToGo() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-600"></div>
+          <div className="w-32 h-32 border-b-2 rounded-full animate-spin border-primary-600"></div>
           <p className="mt-4 text-gray-600">Loading places...</p>
         </div>
       </div>
@@ -119,8 +119,8 @@ function PlacesToGo() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Places To Go</h1>
+        <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <h1 className="mb-4 text-4xl font-bold text-gray-900">Places To Go</h1>
           <p className="text-xl text-gray-600">
             Discover all the amazing destinations Chhattisgarh has to offer
           </p>
@@ -129,11 +129,11 @@ function PlacesToGo() {
 
       {/* Search and Filters */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
             {/* Search Bar */}
             <div className="md:col-span-2">
-              <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="search" className="block mb-2 text-sm font-medium text-gray-700">
                 Search Places
               </label>
               <input
@@ -148,7 +148,7 @@ function PlacesToGo() {
 
             {/* City Filter */}
             <div>
-              <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="city" className="block mb-2 text-sm font-medium text-gray-700">
                 City
               </label>
               <select
@@ -168,7 +168,7 @@ function PlacesToGo() {
 
             {/* Category Filter */}
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-700">
                 Category
               </label>
               <select
@@ -188,7 +188,7 @@ function PlacesToGo() {
           </div>
 
           {/* Filter Summary */}
-          <div className="mt-4 flex items-center justify-between">
+          <div className="flex items-center justify-between mt-4">
             <div className="text-sm text-gray-600">
               {isFiltered 
                 ? `Showing ${filteredPlaces.length} filtered results from ${Object.keys(groupedPlaces).length} cities`
@@ -198,7 +198,7 @@ function PlacesToGo() {
             {(searchTerm || selectedCity || selectedCategory) && (
               <button
                 onClick={clearFilters}
-                className="text-primary-600 hover:text-primary-700 text-sm font-medium"
+                className="text-sm font-medium text-primary-600 hover:text-primary-700"
               >
                 Clear Filters
               </button>
@@ -208,10 +208,10 @@ function PlacesToGo() {
       </div>
 
       {/* Places Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {Object.keys(groupedPlaces).length === 0 ? (
-          <div className="text-center py-12">
-            <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="py-12 text-center">
+            <svg className="w-12 h-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <h3 className="mt-2 text-sm font-medium text-gray-900">No places found</h3>
@@ -225,7 +225,7 @@ function PlacesToGo() {
               <div className="mt-6">
                 <button
                   onClick={clearFilters}
-                  className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+                  className="px-4 py-2 text-white transition-colors rounded-lg bg-primary-600 hover:bg-primary-700"
                 >
                   Clear Filters
                 </button>
@@ -242,7 +242,7 @@ function PlacesToGo() {
                     <h2 className="text-3xl font-bold text-gray-900">{city}</h2>
                     <button
                       onClick={() => openGoogleMaps(city)}
-                      className="flex items-center space-x-1 text-primary-600 hover:text-primary-700 transition-colors"
+                      className="flex items-center space-x-1 transition-colors text-primary-600 hover:text-primary-700"
                       title={`View ${city} on Google Maps`}
                     >
                       <svg 
@@ -261,7 +261,7 @@ function PlacesToGo() {
                 </div>
 
                 {/* Places Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                   {cityPlaces.map((place) => (
                     <PlaceCard key={place._id} place={place} />
                   ))}
