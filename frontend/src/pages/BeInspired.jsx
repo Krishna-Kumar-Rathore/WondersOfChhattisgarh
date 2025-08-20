@@ -163,7 +163,7 @@ function BeInspired() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 text-white bg-primary-600">
+      {/* <section className="py-16 text-white bg-primary-600">
         <div className="max-w-4xl px-4 mx-auto text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-4xl font-bold">
             Ready to Explore Chhattisgarh?
@@ -186,7 +186,7 @@ function BeInspired() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
