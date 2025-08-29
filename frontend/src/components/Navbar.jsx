@@ -38,7 +38,7 @@ function Navbar() {
               src={CGIcon} 
               className="object-cover transition-transform duration-300 rounded-full shadow-sm w-14 h-14 group-hover:scale-105 hover:shadow-amber-400"
             />
-            <Link to="/" className="text-2xl font-bold text-primary-600">
+            <Link to="/" className="text-2xl font-bold text-primary-500 hover:text-primary-800 ">
               Wonder of Chhattisgarh
             </Link>
           </div>
