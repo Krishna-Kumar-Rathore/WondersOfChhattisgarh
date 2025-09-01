@@ -57,16 +57,16 @@ function PlaceCard({ place, isWishlistItem = false, onWishlistUpdate }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="overflow-hidden transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg">
       <Link to={`/place/${place._id}`}>
         <div className="relative">
           <img
             src={place.images[0] || '/placeholder.jpg'}
             alt={place.name}
-            className="w-full h-48 object-cover"
+            className="object-cover w-full h-48"
           />
           <div className="absolute top-2 left-2">
-            <span className="bg-primary-600 text-white px-2 py-1 rounded text-sm">
+            <span className="px-2 py-1 text-sm text-white bg-green-600 rounded">
               {place.category}
             </span>
           </div>
@@ -88,9 +88,9 @@ function PlaceCard({ place, isWishlistItem = false, onWishlistUpdate }) {
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg mb-2">{place.name}</h3>
-          <p className="text-gray-600 text-sm mb-2">{place.city}</p>
-          <p className="text-gray-700 text-sm mb-3 line-clamp-2">
+          <h3 className="mb-2 text-lg font-semibold">{place.name}</h3>
+          <p className="mb-2 text-sm text-gray-600">{place.city}</p>
+          <p className="mb-3 text-sm text-gray-700 line-clamp-2">
             {place.description}
           </p>
           
@@ -107,7 +107,7 @@ function PlaceCard({ place, isWishlistItem = false, onWishlistUpdate }) {
 
           {place.isFeatured && (
             <div className="mb-2">
-              <span className="bg-secondary-100 text-secondary-700 px-2 py-1 rounded text-xs font-medium">
+              <span className="px-2 py-1 text-xs font-medium rounded bg-secondary-100 text-secondary-700">
                 Featured
               </span>
             </div>

@@ -81,40 +81,7 @@ function BeInspired() {
            — By Krishna Kumar Rathore
          </span> */}
 
-          <div className="max-w-5xl px-6 py-10 mx-auto shadow-md md:max-w-7xl bg-white/80 rounded-xl">
-            <p className="text-lg font-medium leading-relaxed text-gray-800 md:text-xl">
-              Chhattisgarh, often called the{" "}
-              <span className="italic font-semibold text-green-700">
-                "Rice Bowl of India,"
-              </span>{" "}
-              is a land of stunning natural beauty, ancient heritage, and rich
-              tribal traditions. Due to its abundant paddy fields and
-              agricultural prominence, the state is also home to majestic
-              waterfalls like{" "}
-              <span className="font-semibold text-blue-800">
-                <a
-                  href="https://en.wikipedia.org/wiki/Chitrakote_Falls"
-                  target="blank"
-                >
-                  {" "}
-                  Chitrakote
-                </a>
-              </span>
-              , historic temples like{" "}
-              <span className="font-semibold text-blue-800">
-                <a
-                  href="https://en.wikipedia.org/wiki/Bhoramdeo_Temple"
-                  target="blank"
-                  rel="noopener noreferrer"
-                >
-                  Bhoramdeo
-                </a>
-              </span>
-              , and dense wildlife sanctuaries. With its vibrant festivals,
-              spiritual landmarks, and unexplored landscapes, Chhattisgarh
-              offers an authentic and unforgettable travel experience.
-            </p>
-          </div>
+          
 
           {/* <div>
             <Cards/>
@@ -160,6 +127,41 @@ function BeInspired() {
           )}
         </div>
       </section>
+
+      <div className="max-w-5xl px-6 py-10 mx-auto shadow-md md:max-w-7xl bg-white/80 rounded-xl">
+            <p className="text-lg font-medium leading-relaxed text-gray-800 md:text-xl">
+              Chhattisgarh, often called the{" "}
+              <span className="italic font-semibold text-green-700">
+                "Rice Bowl of India,"
+              </span>{" "}
+              is a land of stunning natural beauty, ancient heritage, and rich
+              tribal traditions. Due to its abundant paddy fields and
+              agricultural prominence, the state is also home to majestic
+              waterfalls like{" "}
+              <span className="font-semibold text-blue-800">
+                <a
+                  href="https://en.wikipedia.org/wiki/Chitrakote_Falls"
+                  target="blank"
+                >
+                  {" "}
+                  Chitrakote
+                </a>
+              </span>
+              , historic temples like{" "}
+              <span className="font-semibold text-blue-800">
+                <a
+                  href="https://en.wikipedia.org/wiki/Bhoramdeo_Temple"
+                  target="blank"
+                  rel="noopener noreferrer"
+                >
+                  Bhoramdeo
+                </a>
+              </span>
+              , and dense wildlife sanctuaries. With its vibrant festivals,
+              spiritual landmarks, and unexplored landscapes, Chhattisgarh
+              offers an authentic and unforgettable travel experience.
+            </p>
+          </div>
 
       {/* Why Choose Chhattisgarh Section */}
       <section className="py-16 bg-gray-50">
