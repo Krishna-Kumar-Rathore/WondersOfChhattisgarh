@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import CGIcon from '../components/CG_Icon.jpg'
+import CGIcon from "../components/CG_Icon.jpg";
 
 function Navbar() {
   const [user, setUser] = useState(null);
@@ -35,11 +35,14 @@ function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src={CGIcon} 
+              src={CGIcon}
               className="object-cover transition-transform duration-300 rounded-full shadow-sm w-14 h-14 group-hover:scale-115 hover:shadow-amber-700 hover:bg-green-400"
             />
-            <Link to="/" className="text-2xl font-bold text-primary-600 hover:text-primary-800 " 
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <Link
+              to="/"
+              className="text-2xl font-bold text-primary-600 hover:text-primary-800 "
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               Wonder of Chhattisgarh
             </Link>
           </div>
@@ -72,7 +75,9 @@ function Navbar() {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/wishlist"
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
                 >
                   Wishlist
@@ -144,21 +149,30 @@ function Navbar() {
             <Link
               to="/"
               className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               Be Inspired
             </Link>
             <Link
               to="/places"
               className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               Places To Go
             </Link>
             <Link
               to="/things-to-do"
               className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               Things To Do
             </Link>
@@ -168,7 +182,10 @@ function Navbar() {
                 <Link
                   to="/wishlist"
                   className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   Wishlist
                 </Link>
@@ -176,7 +193,10 @@ function Navbar() {
                   <Link
                     to="/admin"
                     className="block px-3 py-2 font-medium text-primary-600"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                   >
                     Admin Panel
                   </Link>
