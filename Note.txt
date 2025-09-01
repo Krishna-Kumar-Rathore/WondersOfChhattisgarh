@@ -1,8 +1,5 @@
-Google Analytics Details
+also added google Analytics in order to check the number of visitor in my website.
 
-Stream ID : 11844705340
-
-Measurement Id : G-GQ8KLS3TGM
 
 
 
