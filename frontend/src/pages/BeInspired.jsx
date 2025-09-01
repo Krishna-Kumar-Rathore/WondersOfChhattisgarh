@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { placesAPI } from '../services/api';
-import PlaceCard from '../components/PlaceCard';
-import { toast } from 'react-toastify';
-
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { placesAPI } from "../services/api";
+import PlaceCard from "../components/PlaceCard";
+import { toast } from "react-toastify";
 
 function BeInspired() {
   const [featuredPlaces, setFeaturedPlaces] = useState([]);
@@ -18,7 +17,7 @@ function BeInspired() {
       const response = await placesAPI.getFeatured();
       setFeaturedPlaces(response.data.places);
     } catch (error) {
-      toast.error('Failed to fetch featured places');
+      toast.error("Failed to fetch featured places");
     } finally {
       setLoading(false);
     }
@@ -40,10 +39,11 @@ function BeInspired() {
       {/* Hero Section */}
       <section className="relative text-white bg-gradient-to-r from-primary-600 to-primary-700">
         <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div 
+        <div
           className="relative flex items-center justify-center bg-center bg-cover h-96"
           style={{
-            backgroundImage: "url('https://res.cloudinary.com/dcwgv3imm/image/upload/v1755714383/CGimg_2_gyixra.png')"
+            backgroundImage:
+              "url('https://res.cloudinary.com/dcwgv3imm/image/upload/v1755714383/CGimg_2_gyixra.png')",
           }}
         >
           <div className="z-10 text-center">
@@ -51,15 +51,74 @@ function BeInspired() {
               Wonders of Chhattisgarh
             </h1>
             <p className="max-w-3xl mx-auto mb-8 text-xl md:text-2xl">
-              Discover the hidden gems, ancient temples, lush forests, and vibrant culture of India's heart
+              Discover the hidden gems, ancient temples, lush forests, and
+              vibrant culture of India's heart
             </p>
             <Link
               to="/places"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="inline-block px-8 py-3 font-semibold transition-colors bg-white rounded-lg text-primary-600 hover:bg-gray-100"
             >
               Explore All Places
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="flex flex-col justify-center gap-5 mt-8 md:gap-9">
+          <p className="text-3xl font-bold text-center text-blue-900 md:text-6xl">
+            10 Chhattisgarh Destinations You Simply Can't Miss
+          </p>
+          <p className="px-4 mx-auto text-lg font-medium text-gray-700 md:text-2xl max-w-7xl ">
+            `As a first-time visitor to Chhattisgarh, you'll be tempted to
+            explore everything – from its vibrant tribal culture and ancient
+            temples to majestic waterfalls and lush forests. If you’re looking
+            to plan your journey, here’s our list of the 10 most iconic places
+            in Chhattisgarh. `
+          </p>
+          {/* <span className="text-sm md:text-base text-gray-500 italic mt-[-15px] mx-auto">
+           — By Krishna Kumar Rathore
+         </span> */}
+
+          <div className="max-w-5xl px-6 py-10 mx-auto shadow-md md:max-w-7xl bg-white/80 rounded-xl">
+            <p className="text-lg font-medium leading-relaxed text-gray-800 md:text-xl">
+              Chhattisgarh, often called the{" "}
+              <span className="italic font-semibold text-green-700">
+                "Rice Bowl of India,"
+              </span>{" "}
+              is a land of stunning natural beauty, ancient heritage, and rich
+              tribal traditions. Due to its abundant paddy fields and
+              agricultural prominence, the state is also home to majestic
+              waterfalls like{" "}
+              <span className="font-semibold text-blue-800">
+                <a
+                  href="https://en.wikipedia.org/wiki/Chitrakote_Falls"
+                  target="blank"
+                >
+                  {" "}
+                  Chitrakote
+                </a>
+              </span>
+              , historic temples like{" "}
+              <span className="font-semibold text-blue-800">
+                <a
+                  href="https://en.wikipedia.org/wiki/Bhoramdeo_Temple"
+                  target="blank"
+                  rel="noopener noreferrer"
+                >
+                  Bhoramdeo
+                </a>
+              </span>
+              , and dense wildlife sanctuaries. With its vibrant festivals,
+              spiritual landmarks, and unexplored landscapes, Chhattisgarh
+              offers an authentic and unforgettable travel experience.
+            </p>
+          </div>
+
+          {/* <div>
+            <Cards/>
+          </div> */}
         </div>
       </section>
 
@@ -71,8 +130,8 @@ function BeInspired() {
               Featured Destinations
             </h2>
             <p className="max-w-3xl mx-auto text-xl text-gray-600">
-              Hand-picked destinations that showcase the best of Chhattisgarh's natural beauty, 
-              rich heritage, and cultural diversity
+              Hand-picked destinations that showcase the best of Chhattisgarh's
+              natural beauty, rich heritage, and cultural diversity
             </p>
           </div>
 
@@ -82,7 +141,8 @@ function BeInspired() {
                 No Featured Places Yet
               </h3>
               <p className="mb-6 text-gray-600">
-                Our team is curating the best destinations for you. Check back soon!
+                Our team is curating the best destinations for you. Check back
+                soon!
               </p>
               <Link
                 to="/places"
@@ -113,8 +173,16 @@ function BeInspired() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
               <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100">
-                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                <svg
+                  className="w-8 h-8 text-primary-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-semibold">Natural Beauty</h3>
@@ -125,20 +193,37 @@ function BeInspired() {
 
             <div className="text-center">
               <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100">
-                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-8 h-8 text-primary-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-semibold">Rich Heritage</h3>
               <p className="text-gray-600">
-                Ancient temples, historical monuments, and archaeological wonders
+                Ancient temples, historical monuments, and archaeological
+                wonders
               </p>
             </div>
 
             <div className="text-center">
               <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100">
-                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                <svg
+                  className="w-8 h-8 text-primary-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-semibold">Tribal Culture</h3>
@@ -149,8 +234,16 @@ function BeInspired() {
 
             <div className="text-center">
               <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100">
-                <svg className="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                <svg
+                  className="w-8 h-8 text-primary-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-semibold">Adventure</h3>
@@ -160,7 +253,23 @@ function BeInspired() {
             </div>
           </div>
         </div>
+
+        
       </section>
+
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <Link
+              to="/places"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="inline-block px-8 py-3 font-semibold transition-colors rounded-lg text-primary-600 hover:bg-gray-300"
+            >
+              Explore All Places
+            </Link>
+          </div>
+      </div>    
+      
+      
 
       {/* Call to Action */}
       {/* <section className="py-16 text-white bg-primary-600">

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { placesAPI } from '../services/api';
-import PlaceCard from '../components/PlaceCard';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from "react";
+import { placesAPI } from "../services/api";
+import PlaceCard from "../components/PlaceCard";
+import { toast } from "react-toastify";
 
 function PlacesToGo() {
   const [places, setPlaces] = useState([]);
@@ -9,12 +9,12 @@ function PlacesToGo() {
   const [groupedPlaces, setGroupedPlaces] = useState({});
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [isFiltered, setIsFiltered] = useState(false);
 
-  const categories = ['Natural', 'Adventure', 'Historic', 'Religious'];
+  const categories = ["Natural", "Adventure", "Historic", "Religious"];
 
   useEffect(() => {
     fetchPlaces(); // fetching all places data
@@ -30,7 +30,7 @@ function PlacesToGo() {
       const response = await placesAPI.getAll();
       setPlaces(response.data.places);
     } catch (error) {
-      toast.error('Failed to fetch places');
+      toast.error("Failed to fetch places");
     } finally {
       setLoading(false);
     }
@@ -41,67 +41,77 @@ function PlacesToGo() {
       const response = await placesAPI.getCities();
       setCities(response.data.cities);
     } catch (error) {
-      console.error('Failed to fetch cities');
+      console.error("Failed to fetch cities");
     }
   };
 
   const filterAndGroupPlaces = () => {
-    let filtered = places;
-    let hasActiveFilters = searchTerm || selectedCity || selectedCategory;
-    setIsFiltered(hasActiveFilters);
+  let filtered = places;
+  let hasActiveFilters = searchTerm || selectedCity || selectedCategory;
+  setIsFiltered(hasActiveFilters);
 
-    // Apply filters
-    if (searchTerm) {
-      filtered = filtered.filter(place =>
-        place.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  // Apply filters
+  if (searchTerm) {
+    filtered = filtered.filter(place =>
+      place.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  if (selectedCity) {
+    filtered = filtered.filter(place =>
+      place.city.toLowerCase() === selectedCity.toLowerCase()
+    );
+  }
+
+  if (selectedCategory) {
+    filtered = filtered.filter(place =>
+      place.category === selectedCategory
+    );
+  }
+
+  setFilteredPlaces(filtered);
+
+  // Group places by city
+  const grouped = filtered.reduce((acc, place) => {
+    const city = place.city;
+    if (!acc[city]) {
+      acc[city] = [];
     }
+    acc[city].push(place);
+    return acc;
+  }, {});
 
-    if (selectedCity) {
-      filtered = filtered.filter(place =>
-        place.city.toLowerCase() === selectedCity.toLowerCase()
-      );
-    }
+  // Sort places within each city by createdAt (oldest first)
+  Object.keys(grouped).forEach(city => {
+    grouped[city].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+  });
 
-    if (selectedCategory) {
-      filtered = filtered.filter(place =>
-        place.category === selectedCategory
-      );
-    }
-
-    setFilteredPlaces(filtered);
-
-    // Group places by city
-    const grouped = filtered.reduce((acc, place) => {
-      const city = place.city;
-      if (!acc[city]) {
-        acc[city] = [];
-      }
-      acc[city].push(place);
+  // Sort cities by the creation date of their oldest place (oldest city first)
+  const sortedGrouped = Object.keys(grouped)
+    .sort((cityA, cityB) => {
+      // Get the oldest place from each city
+      const oldestA = Math.min(...grouped[cityA].map(p => new Date(p.createdAt)));
+      const oldestB = Math.min(...grouped[cityB].map(p => new Date(p.createdAt)));
+      return oldestA - oldestB; // Cities with oldest places first
+    })
+    .reduce((acc, city) => {
+      acc[city] = grouped[city];
       return acc;
     }, {});
 
-    // Sort cities by number of places (descending)
-    const sortedGrouped = Object.keys(grouped)
-      .sort((a, b) => grouped[b].length - grouped[a].length)
-      .reduce((acc, city) => {
-        acc[city] = grouped[city];
-        return acc;
-      }, {});
-
-    setGroupedPlaces(sortedGrouped);
-  };
+  setGroupedPlaces(sortedGrouped);
+};
 
   const clearFilters = () => {
-    setSearchTerm('');
-    setSelectedCity('');
-    setSelectedCategory('');
+    setSearchTerm("");
+    setSelectedCity("");
+    setSelectedCategory("");
   };
 
   const openGoogleMaps = (cityName) => {
     const query = encodeURIComponent(`${cityName}, Chhattisgarh, India`);
     const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   if (loading) {
@@ -120,7 +130,9 @@ function PlacesToGo() {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900">Places To Go</h1>
+          <h1 className="mb-4 text-4xl font-bold text-gray-900">
+            Places To Go
+          </h1>
           <p className="text-xl text-gray-600">
             Discover all the amazing destinations Chhattisgarh has to offer
           </p>
@@ -133,7 +145,10 @@ function PlacesToGo() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
             {/* Search Bar */}
             <div className="md:col-span-2">
-              <label htmlFor="search" className="block mb-2 text-sm font-medium text-gray-700">
+              <label
+                htmlFor="search"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
                 Search Places
               </label>
               <input
@@ -148,7 +163,10 @@ function PlacesToGo() {
 
             {/* City Filter */}
             <div>
-              <label htmlFor="city" className="block mb-2 text-sm font-medium text-gray-700">
+              <label
+                htmlFor="city"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
                 City
               </label>
               <select
@@ -168,7 +186,10 @@ function PlacesToGo() {
 
             {/* Category Filter */}
             <div>
-              <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-700">
+              <label
+                htmlFor="category"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
                 Category
               </label>
               <select
@@ -190,10 +211,13 @@ function PlacesToGo() {
           {/* Filter Summary */}
           <div className="flex items-center justify-between mt-4">
             <div className="text-sm text-gray-600">
-              {isFiltered 
-                ? `Showing ${filteredPlaces.length} filtered results from ${Object.keys(groupedPlaces).length} cities`
-                : `Showing ${filteredPlaces.length} places from ${Object.keys(groupedPlaces).length} cities`
-              }
+              {isFiltered
+                ? `Showing ${filteredPlaces.length} filtered results from ${
+                    Object.keys(groupedPlaces).length
+                  } cities`
+                : `Showing ${filteredPlaces.length} places from ${
+                    Object.keys(groupedPlaces).length
+                  } cities`}
             </div>
             {(searchTerm || selectedCity || selectedCategory) && (
               <button
@@ -211,15 +235,26 @@ function PlacesToGo() {
       <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {Object.keys(groupedPlaces).length === 0 ? (
           <div className="py-12 text-center">
-            <svg className="w-12 h-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg
+              className="w-12 h-12 mx-auto text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9.172 16.172a4 4 0 015.656 0M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No places found</h3>
+            <h3 className="mt-2 text-sm font-medium text-gray-900">
+              No places found
+            </h3>
             <p className="mt-1 text-sm text-gray-500">
               {searchTerm || selectedCity || selectedCategory
-                ? 'Try adjusting your search criteria'
-                : 'No places have been added yet'
-              }
+                ? "Try adjusting your search criteria"
+                : "No places have been added yet"}
             </p>
             {(searchTerm || selectedCity || selectedCategory) && (
               <div className="mt-6">
@@ -245,18 +280,19 @@ function PlacesToGo() {
                       className="flex items-center space-x-1 transition-colors text-primary-600 hover:text-primary-700"
                       title={`View ${city} on Google Maps`}
                     >
-                      <svg 
-                        className="w-6 h-6" 
-                        fill="currentColor" 
+                      <svg
+                        className="w-6 h-6"
+                        fill="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                       </svg>
                       <span className="text-sm font-medium">View on Map</span>
                     </button>
                   </div>
                   <div className="text-sm text-gray-500">
-                    {cityPlaces.length} {cityPlaces.length === 1 ? 'place' : 'places'}
+                    {cityPlaces.length}{" "}
+                    {cityPlaces.length === 1 ? "place" : "places"}
                   </div>
                 </div>
 
@@ -268,7 +304,8 @@ function PlacesToGo() {
                 </div>
 
                 {/* Separator line (except for last city) */}
-                {Object.keys(groupedPlaces).indexOf(city) !== Object.keys(groupedPlaces).length - 1 && (
+                {Object.keys(groupedPlaces).indexOf(city) !==
+                  Object.keys(groupedPlaces).length - 1 && (
                   <div className="mt-12 border-b border-gray-200"></div>
                 )}
               </div>

@@ -36,9 +36,10 @@ function Navbar() {
           <div className="flex items-center">
             <img
               src={CGIcon} 
-              className="object-cover transition-transform duration-300 rounded-full shadow-sm w-14 h-14 group-hover:scale-105 hover:shadow-amber-400"
+              className="object-cover transition-transform duration-300 rounded-full shadow-sm w-14 h-14 group-hover:scale-115 hover:shadow-amber-700 hover:bg-green-400"
             />
-            <Link to="/" className="text-2xl font-bold text-primary-500 hover:text-primary-800 ">
+            <Link to="/" className="text-2xl font-bold text-primary-600 hover:text-primary-800 " 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               Wonder of Chhattisgarh
             </Link>
           </div>
@@ -47,19 +48,22 @@ function Navbar() {
           <div className="items-center hidden space-x-8 md:flex">
             <Link
               to="/"
-              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
             >
               Be Inspired
             </Link>
             <Link
               to="/places"
-              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
             >
               Places To Go
             </Link>
             <Link
               to="/things-to-do"
-              className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
             >
               Things To Do
             </Link>
@@ -68,14 +72,15 @@ function Navbar() {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/wishlist"
-                  className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
                 >
                   Wishlist
                 </Link>
                 {user.isAdmin && (
                   <Link
                     to="/admin"
-                    className="px-4 py-2 text-white transition-colors rounded-md bg-primary-600 hover:bg-primary-700"
+                    className="px-4 py-2 text-white rounded-md font-boldtransition-colors bg-primary-600 hover:bg-primary-700"
                   >
                     Admin
                   </Link>
@@ -84,7 +89,7 @@ function Navbar() {
                   <span className="text-gray-700">Hi, {user.name}</span>
                   <button
                     onClick={handleLogout}
-                    className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+                    className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
                   >
                     Logout
                   </button>
@@ -94,13 +99,13 @@ function Navbar() {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/login"
-                  className="px-3 py-2 text-gray-700 transition-colors hover:text-primary-600"
+                  className="px-4 py-2 font-bold text-white transition-colors bg-blue-600 rounded-md hover:bg-primary-700"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2 text-white transition-colors rounded-md bg-primary-600 hover:bg-primary-700"
+                  className="px-4 py-2 font-bold text-white transition-colors bg-blue-600 rounded-md hover:bg-primary-700"
                 >
                   Sign Up
                 </Link>
@@ -138,21 +143,21 @@ function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               to="/"
-              className="block px-3 py-2 text-gray-700 hover:text-primary-600"
+              className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Be Inspired
             </Link>
             <Link
               to="/places"
-              className="block px-3 py-2 text-gray-700 hover:text-primary-600"
+              className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Places To Go
             </Link>
             <Link
               to="/things-to-do"
-              className="block px-3 py-2 text-gray-700 hover:text-primary-600"
+              className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Things To Do
@@ -162,7 +167,7 @@ function Navbar() {
               <>
                 <Link
                   to="/wishlist"
-                  className="block px-3 py-2 text-gray-700 hover:text-primary-600"
+                  className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Wishlist
@@ -191,14 +196,14 @@ function Navbar() {
               <>
                 <Link
                   to="/login"
-                  className="block px-3 py-2 text-gray-700 hover:text-primary-600"
+                  className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="block px-3 py-2 font-medium text-primary-600"
+                  className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign Up
