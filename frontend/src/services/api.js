@@ -26,7 +26,7 @@ export const authAPI = {
   getWishlist: () => api.get('/auth/wishlist')
 };
 
-// Places API
+// Places API : all data is getting fetched from here at once
 export const placesAPI = {
   getFeatured: () => api.get('/places/featured'),
   getAll: () => api.get('/places/all'),

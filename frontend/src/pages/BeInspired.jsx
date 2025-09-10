@@ -25,10 +25,13 @@ function BeInspired() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="w-32 h-32 border-b-2 rounded-full animate-spin border-primary-600"></div>
-          <p className="mt-4 text-gray-600">Loading amazing places...</p>
+      <div className="flex items-center justify-center w-full min-h-screen bg-gray-50">
+        <div className="flex flex-col items-center justify-center text-center">
+          <div className="w-32 h-32 border-b-4 border-blue-600 rounded-full animate-spin"></div>
+          <p className="max-w-md mt-6 text-gray-600">
+            Initially, it takes around 50 seconds to fetch the data from the
+            server. Please wait to experience the magic.
+          </p>
         </div>
       </div>
     );
@@ -81,8 +84,6 @@ function BeInspired() {
            — By Krishna Kumar Rathore
          </span> */}
 
-          
-
           {/* <div>
             <Cards/>
           </div> */}
@@ -129,39 +130,38 @@ function BeInspired() {
       </section>
 
       <div className="max-w-5xl px-6 py-10 mx-auto shadow-md md:max-w-7xl bg-white/80 rounded-xl">
-            <p className="text-lg font-medium leading-relaxed text-gray-800 md:text-xl">
-              Chhattisgarh, often called the{" "}
-              <span className="italic font-semibold text-green-700">
-                "Rice Bowl of India,"
-              </span>{" "}
-              is a land of stunning natural beauty, ancient heritage, and rich
-              tribal traditions. Due to its abundant paddy fields and
-              agricultural prominence, the state is also home to majestic
-              waterfalls like{" "}
-              <span className="font-semibold text-blue-800">
-                <a
-                  href="https://en.wikipedia.org/wiki/Chitrakote_Falls"
-                  target="blank"
-                >
-                  {" "}
-                  Chitrakote
-                </a>
-              </span>
-              , historic temples like{" "}
-              <span className="font-semibold text-blue-800">
-                <a
-                  href="https://en.wikipedia.org/wiki/Bhoramdeo_Temple"
-                  target="blank"
-                  rel="noopener noreferrer"
-                >
-                  Bhoramdeo
-                </a>
-              </span>
-              , and dense wildlife sanctuaries. With its vibrant festivals,
-              spiritual landmarks, and unexplored landscapes, Chhattisgarh
-              offers an authentic and unforgettable travel experience.
-            </p>
-          </div>
+        <p className="text-lg font-medium leading-relaxed text-gray-800 md:text-xl">
+          Chhattisgarh, often called the{" "}
+          <span className="italic font-semibold text-green-700">
+            "Rice Bowl of India,"
+          </span>{" "}
+          is a land of stunning natural beauty, ancient heritage, and rich
+          tribal traditions. Due to its abundant paddy fields and agricultural
+          prominence, the state is also home to majestic waterfalls like{" "}
+          <span className="font-semibold text-blue-800">
+            <a
+              href="https://en.wikipedia.org/wiki/Chitrakote_Falls"
+              target="blank"
+            >
+              {" "}
+              Chitrakote
+            </a>
+          </span>
+          , historic temples like{" "}
+          <span className="font-semibold text-blue-800">
+            <a
+              href="https://en.wikipedia.org/wiki/Bhoramdeo_Temple"
+              target="blank"
+              rel="noopener noreferrer"
+            >
+              Bhoramdeo
+            </a>
+          </span>
+          , and dense wildlife sanctuaries. With its vibrant festivals,
+          spiritual landmarks, and unexplored landscapes, Chhattisgarh offers an
+          authentic and unforgettable travel experience.
+        </p>
+      </div>
 
       {/* Why Choose Chhattisgarh Section */}
       <section className="py-16 bg-gray-50">
@@ -255,23 +255,19 @@ function BeInspired() {
             </div>
           </div>
         </div>
-
-        
       </section>
 
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <Link
-              to="/places"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-block px-8 py-3 font-semibold transition-colors rounded-lg text-primary-600 hover:bg-gray-300"
-            >
-              Explore All Places
-            </Link>
-          </div>
-      </div>    
-      
-      
+        <div className="mb-12 text-center">
+          <Link
+            to="/places"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-block px-8 py-3 font-semibold transition-colors rounded-lg text-primary-600 hover:bg-gray-300"
+          >
+            Explore All Places
+          </Link>
+        </div>
+      </div>
 
       {/* Call to Action */}
       {/* <section className="py-16 text-white bg-primary-600">
