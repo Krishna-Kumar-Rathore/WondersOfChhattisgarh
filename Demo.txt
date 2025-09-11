@@ -1,0 +1,10 @@
+Add authorized origins:
+
+http://localhost:3000 (development)
+https://wonders-of-chhattisgarh.vercel.app (production)
+
+
+Add authorized redirect URIs:
+
+http://localhost:3000/auth/google/callback
+https://wonders-of-chhattisgarh.vercel.app/auth/google/callback
