@@ -1,3 +1,4 @@
+// services/api.js
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -7,26 +8,74 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-// Add user ID to requests if logged in
+// Enhanced request interceptor with JWT support
 api.interceptors.request.use((config) => {
+  // Try JWT first
+  const token = localStorage.getItem('accessToken');
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+    return config;
+  }
+  
+  // Fallback to legacy auth
   const userId = localStorage.getItem('userId');
   if (userId) {
     config.headers['user-id'] = userId;
   }
+  
   return config;
 });
+
+// Response interceptor for token refresh
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+    
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken) {
+        try {
+          const response = await axios.post(`${API_URL}/auth/refresh`, {
+            refreshToken
+          });
+          
+          const { accessToken, refreshToken: newRefreshToken } = response.data;
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', newRefreshToken);
+          
+          originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+          return api(originalRequest);
+        } catch (refreshError) {
+          // Refresh failed, logout user
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('userName');
+          localStorage.removeItem('isAdmin');
+          window.location.href = '/login';
+        }
+      }
+    }
+    
+    return Promise.reject(error);
+  }
+);
 
 // Auth API
 export const authAPI = {
   login: (email, password) => api.post('/auth/login', { email, password }),
   signup: (name, email, password) => api.post('/auth/signup', { name, email, password }),
   getUser: () => api.get('/auth/user'),
+  refreshToken: (refreshToken) => api.post('/auth/refresh', { refreshToken }),
   addToWishlist: (placeId) => api.post('/auth/wishlist/add', { placeId }),
   removeFromWishlist: (placeId) => api.post('/auth/wishlist/remove', { placeId }),
   getWishlist: () => api.get('/auth/wishlist')
 };
 
-// Places API : all data is getting fetched from here at once
+// Places API (MISSING FROM YOUR CODE)
 export const placesAPI = {
   getFeatured: () => api.get('/places/featured'),
   getAll: () => api.get('/places/all'),
@@ -43,7 +92,7 @@ export const placesAPI = {
   getCities: () => api.get('/places/filters/cities')
 };
  
-// Reviews API
+// Reviews API (MISSING FROM YOUR CODE)
 export const reviewsAPI = {
   getByPlace: (placeId) => api.get(`/reviews/${placeId}`),
   create: (reviewData) => api.post('/reviews', reviewData),
@@ -51,7 +100,7 @@ export const reviewsAPI = {
   delete: (reviewId) => api.delete(`/reviews/${reviewId}`)
 };
 
-// Admin API
+// Admin API (MISSING FROM YOUR CODE)
 export const adminAPI = {
   getStats: () => api.get('/admin/stats'),
   getPlaces: () => api.get('/admin/places'),
@@ -60,4 +109,26 @@ export const adminAPI = {
   getReviews: () => api.get('/admin/reviews')
 };
 
+// Utility functions
+export const setAuthTokens = (accessToken, refreshToken, user) => {
+  localStorage.setItem('accessToken', accessToken);
+  localStorage.setItem('refreshToken', refreshToken);
+  localStorage.setItem('userId', user.id);
+  localStorage.setItem('userName', user.name);
+  localStorage.setItem('isAdmin', user.isAdmin);
+};
+
+export const clearAuthTokens = () => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('userName');
+  localStorage.removeItem('isAdmin');
+};
+
+export const isAuthenticated = () => {
+  return !!(localStorage.getItem('accessToken') || localStorage.getItem('userId'));
+};
+
+// Default export
 export default api;
