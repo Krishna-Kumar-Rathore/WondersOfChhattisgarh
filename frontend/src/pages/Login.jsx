@@ -162,28 +162,7 @@ function Login() {
             </div>
           </form>
 
-          {/* Demo Accounts Section (Optional) */}
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 text-gray-500 bg-white">Quick Demo Access</span>
-              </div>
-            </div>
-
-            <div className="mt-4 space-y-2">
-              <div className="p-3 text-xs text-gray-600 rounded-md bg-gray-50">
-                <p className="font-medium">Demo Admin Account:</p>
-                <p>Email: admin@chhattisgarh.com | Password: admin123</p>
-              </div>
-              <div className="p-3 text-xs text-gray-600 rounded-md bg-gray-50">
-                <p className="font-medium">Demo User Account:</p>
-                <p>Email: user@example.com | Password: user123</p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
