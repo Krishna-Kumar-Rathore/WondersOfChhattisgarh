@@ -75,7 +75,7 @@ export const authAPI = {
   getWishlist: () => api.get('/auth/wishlist')
 };
 
-// Places API (MISSING FROM YOUR CODE)
+// Places API 
 export const placesAPI = {
   getFeatured: () => api.get('/places/featured'),
   getAll: () => api.get('/places/all'),

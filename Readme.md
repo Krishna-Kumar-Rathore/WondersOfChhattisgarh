@@ -135,3 +135,5 @@ VITE_APP_TITLE=Wonder of Chhattisgarh
 ```
 
 **Built with ❤️ to showcase Chhattisgarh's natural beauty and MERN stack development skills**
+
+

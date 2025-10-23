@@ -63,7 +63,7 @@ function PlaceCard({ place, isWishlistItem = false, onWishlistUpdate }) {
           <img
             src={place.images[0] || '/placeholder.jpg'}
             alt={place.name}
-            className="object-cover w-full h-48"
+            className="object-cover w-full h-48 transition-transform duration-500 ease-in-out hover:scale-110"
           />
           <div className="absolute top-2 left-2">
             <span className="px-2 py-1 text-sm text-white bg-green-600 rounded">
