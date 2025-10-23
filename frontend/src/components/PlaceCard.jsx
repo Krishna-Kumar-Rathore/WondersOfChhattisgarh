@@ -88,7 +88,7 @@ function PlaceCard({ place, isWishlistItem = false, onWishlistUpdate }) {
         </div>
 
         <div className="p-4">
-          <h3 className="mb-2 text-lg font-semibold">{place.name}</h3>
+          <h3 className="mb-2 text-lg font-semibold transition-colors duration-300 cursor-pointer hover:text-emerald-600">{place.name}</h3>
           <p className="mb-2 text-sm text-gray-600">{place.city}</p>
           <p className="mb-3 text-sm text-gray-700 line-clamp-2">
             {place.description}
