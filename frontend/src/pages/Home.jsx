@@ -34,7 +34,7 @@ const Home = () => {
       title: "Ancient Temples",
       description: ""
       
-    },,
+    },
     {
       id: 4,
       url: "https://res.cloudinary.com/dcwgv3imm/video/upload/v1761987515/Reel6_toope7.mp4",
@@ -49,6 +49,12 @@ const Home = () => {
     },
     {
       id: 6,
+      url: "https://res.cloudinary.com/dcwgv3imm/video/upload/v1761987590/Reel5_Food_yem1uu.mp4",
+      title: "Chhattisgariya Cuisine",
+      description: ""
+    },
+    {
+      id: 7,
       url: "https://res.cloudinary.com/dcwgv3imm/video/upload/v1761986956/Reel7_tskrkl.mp4",
       title: "Hidden Gems",
       description: "Explore More"
