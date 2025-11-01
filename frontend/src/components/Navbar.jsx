@@ -54,6 +54,14 @@ function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
             >
+              Home
+            </Link>
+            
+            <Link
+              to="/BeInsired"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="px-3 py-2 font-bold text-gray-700 transition-colors hover:text-primary-600"
+            >
               Be Inspired
             </Link>
             <Link
@@ -147,7 +155,18 @@ function Navbar() {
         <div className="bg-white border-t md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
-              to="/"
+              to="/BeInsired"
+              className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
+              onClick={() => {
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              Home
+            </Link>
+            
+            <Link
+              to="/BeInsired"
               className="block px-3 py-2 font-bold text-gray-700 hover:text-primary-600"
               onClick={() => {
                 setIsMenuOpen(false);

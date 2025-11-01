@@ -31,6 +31,7 @@ import PlaceDetails from "./pages/PlaceDetails";
 import Admin from "./pages/Admin";
 import AuthSuccess from "./pages/AuthSuccess";
 import AuthError from "./pages/AuthError";
+import Home from "./pages/Home";
 
 // Get Google Client ID from environment
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -146,7 +147,8 @@ function App() {
 
           <main className="pt-16">
             <Routes>
-              <Route path="/" element={<BeInspired />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/BeInsired" element={<BeInspired />} />
               <Route path="/places" element={<PlacesToGo />} />
               <Route path="/things-to-do" element={<ThingsToDo />} />
               <Route path="/place/:id" element={<PlaceDetails />} />
