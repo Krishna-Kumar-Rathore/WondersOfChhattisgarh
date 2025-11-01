@@ -38,8 +38,8 @@ const Home = () => {
     {
       id: 4,
       url: "https://res.cloudinary.com/dcwgv3imm/video/upload/v1761987515/Reel6_toope7.mp4",
-      title: "Wildlife Sanctuary",
-      description: "छत्तीसगढ़िया सबले बढ़िया 🌾"
+      title: "छत्तीसगढ़िया सबले बढ़िया🌾",
+      description: ""
     },
     {
       id: 5,
